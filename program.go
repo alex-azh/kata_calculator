@@ -138,6 +138,7 @@ func InputFromCLI() string {
 }
 
 func main() {
+	// хотел убрать это сравнение ненужное, а оно даже и неправильное по текущей логике, но не стал исправлять.
 	var promt string
 	for promt != "q" {
 		line := InputFromCLI()
