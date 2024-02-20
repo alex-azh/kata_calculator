@@ -132,19 +132,19 @@ func (c Calculator) Calculate(values []string) string {
 }
 
 func InputFromCLI() string {
-	reader := bufio.NewReader(os.Stdin)
-	promt, _ := reader.ReadString('\n')
-	return strings.TrimRight(promt, "\n")
+	sc := bufio.NewScanner(os.Stdin)
+	sc.Scan()
+	return sc.Text()
+	// вот это не работает корректно
+	// reader := bufio.NewReader(os.Stdin)
+	// promt, _ := reader.ReadString('\n')
+	// return strings.TrimRight(promt, "\n")
 }
 
 func main() {
 	// хотел убрать это сравнение ненужное, а оно даже и неправильное по текущей логике, но не стал исправлять.
-	var promt string
-	for promt != "q" {
+	for {
 		line := InputFromCLI()
-		if line == "q" {
-			break
-		}
 		calculator := Calculator{}
 		values := strings.Split(line, " ")
 		result := calculator.Calculate(values)
